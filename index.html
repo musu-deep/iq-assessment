@@ -3,13 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>قياس مستوى الذكاء للأعمار 7–18</title>
 
-  <!-- SEO -->
   <meta name="description" content="منصة تفاعلية لقياس الأنماط المعرفية للأعمار 7–18 سنة عبر أسئلة لفظية ومنطقية وعددية وبصرية تعمل مباشرة من المتصفح." />
 
-  <!-- Open Graph (Facebook / WhatsApp / LinkedIn / Telegram) -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="قياس مستوى الذكاء للأعمار 7–18">
   <meta property="og:description" content="اختبار تفاعلي لقياس الأنماط المعرفية للأطفال والناشئة يعمل مباشرة من المتصفح.">
@@ -40,9 +38,7 @@
       --shadow: 0 18px 50px rgba(0,0,0,.28);
       --radius: 24px;
     }
-
     * { box-sizing: border-box; }
-
     body {
       margin: 0;
       font-family: "Segoe UI", Tahoma, Arial, sans-serif;
@@ -53,9 +49,7 @@
         linear-gradient(135deg, var(--bg1), var(--bg2));
       min-height: 100vh;
     }
-
     .wrap { max-width: 1220px; margin: 0 auto; padding: 22px; }
-
     .hero, .card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -64,28 +58,105 @@
       border-radius: var(--radius);
       box-shadow: var(--shadow);
     }
-
     .hero { padding: 28px; margin-bottom: 20px; }
-
     .hero-grid {
       display: grid;
       grid-template-columns: 1.5fr .8fr;
       gap: 18px;
       align-items: center;
     }
-
     h1,h2,h3,p { margin: 0; }
-
-    h1 {
-      font-size: 34px;
-      line-height: 1.3;
-      margin-bottom: 10px;
+    h1 { font-size: 34px; line-height: 1.3; margin-bottom: 10px; }
+    .sub { color: var(--muted); line-height: 1.9; font-size: 15px; }
+    .note {
+      margin-top: 14px; padding: 12px 14px; border-radius: 16px;
+      background: rgba(255,255,255,.07); border: 1px dashed rgba(255,255,255,.18);
+      color: #f6e9c6; font-size: 14px; line-height: 1.8;
     }
-
-    .sub {
-      color: var(--muted);
-      line-height: 1.9;
-      font-size: 15px;
+    .stats {
+      display: grid; grid-template-columns: repeat(2,1fr); gap: 12px;
+    }
+    .stat {
+      padding: 16px; border-radius: 18px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14);
+    }
+    .stat b { display:block; font-size: 24px; color: var(--accent); margin-bottom: 4px; }
+    .layout {
+      display: grid;
+      grid-template-columns: 330px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    .panel { padding: 20px; }
+    label { display:block; margin-bottom: 8px; color: #dce8fb; font-weight: 600; }
+    select, input[type="text"] {
+      width:100%; padding: 13px 14px; border-radius: 14px; border:1px solid rgba(255,255,255,.15);
+      background: rgba(8,14,25,.55); color: var(--text); outline: none; margin-bottom: 14px;
+    }
+    .btns { display:flex; gap:10px; flex-wrap: wrap; }
+    button {
+      border: none; cursor: pointer; border-radius: 14px; padding: 13px 18px; font-weight: 700;
+      transition: .2s transform ease, .2s opacity ease, .2s background ease;
+    }
+    button:hover { transform: translateY(-1px); }
+    .primary { background: linear-gradient(135deg, var(--accent), #f1d69c); color:#1b1e27; }
+    .secondary { background: rgba(255,255,255,.08); color: var(--text); border: 1px solid rgba(255,255,255,.15); }
+    .danger { background: rgba(255,123,123,.18); color: #ffd7d7; border:1px solid rgba(255,123,123,.22); }
+    .muted { color: var(--muted); font-size: 14px; line-height: 1.8; }
+    .meta {
+      display:grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 16px;
+    }
+    .meta .mini {
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); border-radius: 16px; padding: 14px;
+    }
+    .mini span { display:block; color: var(--muted); font-size: 13px; margin-bottom: 6px; }
+    .mini strong { font-size: 20px; color: var(--accent2); }
+    .progress {
+      height: 12px; background: rgba(255,255,255,.07); border-radius: 999px; overflow: hidden; margin: 12px 0 18px;
+      border: 1px solid rgba(255,255,255,.12);
+    }
+    .progress > div { height:100%; width:0; background: linear-gradient(90deg, var(--accent2), var(--accent)); transition: width .35s ease; }
+    .question-card { padding: 24px; min-height: 420px; }
+    .badge {
+      display:inline-flex; align-items:center; gap:8px; padding: 9px 12px; border-radius: 999px;
+      background: rgba(255,255,255,.07); color: #d5e5ff; font-size: 13px; border: 1px solid rgba(255,255,255,.12);
+      margin-bottom: 14px;
+    }
+    .question-title { font-size: 26px; line-height: 1.7; margin-bottom: 18px; }
+    .question-sub { color: var(--muted); margin-bottom: 12px; font-size: 14px; }
+    .options { display:grid; gap: 12px; margin-top: 18px; }
+    .option {
+      padding: 15px 16px; border-radius: 18px; background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12);
+      cursor:pointer; transition: .2s all ease;
+    }
+    .option:hover { background: rgba(255,255,255,.09); }
+    .option.selected { outline: 2px solid var(--accent); background: rgba(213,182,111,.18); }
+    .result-grid {
+      display:grid; grid-template-columns: 1.2fr .9fr; gap: 18px;
+    }
+    .result-box, .profile-box { padding: 22px; }
+    .score {
+      font-size: 52px; color: var(--accent); font-weight: 800; line-height: 1;
+    }
+    .band { margin-top: 10px; font-size: 20px; }
+    .bar { margin: 14px 0; }
+    .bar label { margin-bottom: 6px; font-size: 14px; }
+    .bar-outer {
+      height: 11px; border-radius: 999px; background: rgba(255,255,255,.08); overflow: hidden; border: 1px solid rgba(255,255,255,.12);
+    }
+    .bar-inner { height:100%; width:0; background: linear-gradient(90deg, var(--accent2), var(--good)); }
+    .pill {
+      display:inline-block; padding: 8px 12px; border-radius: 999px; background: rgba(127,182,255,.14); border:1px solid rgba(127,182,255,.22); color:#dbeafe; margin: 0 0 8px 8px;
+    }
+    .footer-note {
+      margin-top: 18px; padding: 14px; border-radius: 16px; background: rgba(255,209,102,.08); border: 1px solid rgba(255,209,102,.20); color: #ffefc2; line-height: 1.8;
+    }
+    .hidden { display:none !important; }
+    .small { font-size: 13px; color: var(--muted); }
+    @media (max-width: 980px) {
+      .hero-grid, .layout, .result-grid { grid-template-columns: 1fr; }
+      .meta { grid-template-columns: 1fr; }
+      h1 { font-size: 28px; }
+      .question-title { font-size: 22px; }
     }
   </style>
 </head>
